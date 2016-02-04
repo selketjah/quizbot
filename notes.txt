@@ -9,6 +9,9 @@ Exact answer: 'what is the capital of Belgium?'
 
 Winner = first correct, or closest within timeframe
 
+[20:03:05] Gien Verschatse: ParticipantResponse?
+[20:03:29] Mathias Brandewinder: yeah - or Guess?
+
 Exact? 'Brussels', 'Bruxelles', "brUSSELs', 'Brussel', 'burssels'
 'fuzzy string matching' : edit distance / Levenhstein distance (more generally string distance)
 https://en.wikipedia.org/wiki/Levenshtein_distance
