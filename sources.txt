@@ -1,0 +1,19 @@
+// quiz services
+http://jservice.io/
+
+// quiz bot irc
+https://github.com/plaimi/q
+https://github.com/rawsonj/triviabot
+
+// api's
+marketplace -> https://market.mashape.com/explore?sort=developers
+wikipedia   -> https://www.mediawiki.org/wiki/API:Search
+imdb        -> http://www.omdbapi.com/
+flickr      -> https://www.flickr.com/services/api/
+worldbank   -> http://data.worldbank.org/developers?display=
+countries   -> http://restcountries.eu/
+beer        -> http://www.brewerydb.com/developers/docs
+
+http://www.omdbapi.com/
+https://developer.musicgraph.com/api-docs/v2/artists
+http://blogs.msdn.com/b/fsharpteam/archive/2012/09/21/the-f-3-0-freebase-type-provider-sample-integrating-internet-scale-data-sources-into-a-strongly-typed-language.aspx
