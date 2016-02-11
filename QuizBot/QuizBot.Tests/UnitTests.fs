@@ -3,11 +3,11 @@
 open System
 open Xunit
 open Swensen.Unquote
-open QuizBot
+open QuizBot.Core
 
 let question = { 
   Question = "What is the capital of Belgium?"
-  Answer = "Brussels" }
+  ExpectedAnswer = "Brussels" }
 
 [<Fact>]
 let ``Given wrong answer Then return false`` () =
@@ -22,19 +22,19 @@ let ``Given correct answer Then return true`` () =
   test <@ expected = actual @>
 
 let mathias = {
-  Participant = "Mathias"
+  Participant = Participant "Mathias"
   Timestamp = DateTime(2010,1,1)
   Answer = "Paris"
 }
 
 let gien = {
-  Participant = "Gien"
+  Participant = Participant "Gien"
   Timestamp = DateTime(2010,1,2)
   Answer = "Brussels"  
 }
 
 let don = {
-  Participant = "Don"
+  Participant = Participant "Don"
   Timestamp = DateTime(2010,1,1)
   Answer = "Brussels"    
 }
