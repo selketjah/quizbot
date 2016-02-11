@@ -1,3 +1,12 @@
+## TODO
+
+* Paket
+* how are we going to seperate multiple choice wifromth single
+* design for common format across data sources for questions
+* check: does the capital actually exist? ex Macao has no capital
+
+## Notes
+
 ! careful: publishing keys, deploying bot (AppVeyor?) (Fake deploy?)
 
 Bot
@@ -6,6 +15,7 @@ Multiple choices?
 Single choice?
 Closest answer : 'what is the pop of Belgium?' (within margin)
 Exact answer: 'what is the capital of Belgium?'
+? What is the country from 4 with largest population
 
 Winner = first correct, or closest within timeframe
 
