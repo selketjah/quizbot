@@ -1,4 +1,4 @@
-framework: net35, net40
+framework: >= net45
 source https://nuget.org/api/v2
 nuget FSharp.Data
 nuget Unquote
