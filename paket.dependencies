@@ -1,0 +1,6 @@
+framework: net35, net40
+source https://nuget.org/api/v2
+nuget FSharp.Data
+nuget Unquote
+nuget xunit
+nuget xunit.runner.visualstudio

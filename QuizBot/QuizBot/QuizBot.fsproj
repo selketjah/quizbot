@@ -53,14 +53,9 @@
     <Compile Include="Core.fs" />
     <Compile Include="WorldBankQuestions.fsi" />
     <Compile Include="WorldBankQuestions.fs" />
-    <Content Include="packages.config" />
     <None Include="Script.fsx" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="FSharp.Data">
-      <HintPath>..\packages\FSharp.Data.2.2.5\lib\net40\FSharp.Data.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="mscorlib" />
     <Reference Include="FSharp.Core, Version=$(TargetFSharpCoreVersion), Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <Private>True</Private>
@@ -77,4 +72,15 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.0'">
+      <ItemGroup>
+        <Reference Include="FSharp.Data">
+          <HintPath>..\..\packages\FSharp.Data\lib\net40\FSharp.Data.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
 </Project>
