@@ -2,6 +2,9 @@
 
 * GV : create a twitter for the bot
 * fill the Twitter code with actual code to Twitter
+  post a tweet
+  grab answers to a tweet
+  ! CAREFUL WITH THE TWITTER RATE LIMIT
 * wrap question creation -> post to Twitter in 'something'
 * create a TopShelf host
 * how are we going to seperate multiple choice wifromth single
