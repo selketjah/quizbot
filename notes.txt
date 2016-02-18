@@ -1,9 +1,15 @@
 ## TODO
 
-* Paket
+* GV : create a twitter for the bot
+* fill the Twitter code with actual code to Twitter
+* wrap question creation -> post to Twitter in 'something'
+* create a TopShelf host
 * how are we going to seperate multiple choice wifromth single
 * design for common format across data sources for questions
 * check: does the capital actually exist? ex Macao has no capital
+
+Done
+* Paket
 
 ## Notes
 
