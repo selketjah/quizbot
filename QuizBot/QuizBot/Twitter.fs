@@ -17,11 +17,11 @@ module Twitter =
     Timestamp:DateTime
   }
 
- let appSettings = ConfigurationManager.AppSettings
- let apiKey = appSettings.["apiKey"]
- let apiSecret = appSettings.["apiSecret"]
- let accessToken = appSettings.["accessToken"]
- let accessTokenSecret = appSettings.["accessTokenSecret"]
+  let appSettings = ConfigurationManager.AppSettings
+  let apiKey = appSettings.["apiKey"]
+  let apiSecret = appSettings.["apiSecret"]
+  let accessToken = appSettings.["accessToken"]
+  let accessTokenSecret = appSettings.["accessTokenSecret"]
 
   let context = 
     
