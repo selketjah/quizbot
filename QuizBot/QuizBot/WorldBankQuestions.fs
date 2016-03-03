@@ -23,14 +23,10 @@ module WorldBankQuestions =
 
   let guessCapitalOfCountryQuestion () =
     let country, capital = getRandomCountryCapital ()
-    { 
-      Question = sprintf "What is the capital of %s" country
-      ExpectedAnswer = capital
-    }
+    { Question = sprintf "What is the capital of %s?" country
+      ExpectedAnswer = capital }
 
   let guessCountryWithCapitalQuestion () =
     let country, capital = getRandomCountryCapital ()
-    { 
-      Question = sprintf "What is the country with capital city %s" capital
-      ExpectedAnswer = country
-    }
+    { Question = sprintf "What is the country with capital city %s?" capital
+      ExpectedAnswer = country }

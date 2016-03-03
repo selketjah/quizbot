@@ -5,3 +5,4 @@ nuget Unquote
 nuget xunit
 nuget xunit.runner.visualstudio
 nuget linqtotwitter
+nuget Topshelf

@@ -4,7 +4,10 @@ module Core =
 
   open System
 
-  type Question = { Question: string; ExpectedAnswer: string }
+  type Question = { 
+    Question: string
+    ExpectedAnswer: string 
+  }
 
   type Participant = Participant of string
 
