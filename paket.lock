@@ -38,3 +38,7 @@ NUGET
     xunit.extensibility.execution (2.1.0)
       xunit.extensibility.core (2.1.0)
     xunit.runner.visualstudio (2.1.0)
+GITHUB
+  remote: evelinag/fsharp-swapi
+  specs:
+    swapi.fs (1e5748ae208afc47779d5a5c570dd345f335d8a3)

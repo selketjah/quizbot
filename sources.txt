@@ -13,6 +13,7 @@ flickr      -> https://www.flickr.com/services/api/
 worldbank   -> http://data.worldbank.org/developers?display=
 countries   -> http://restcountries.eu/
 beer        -> http://www.brewerydb.com/developers/docs
+star wars   -> http://swapi.co/
 
 http://www.omdbapi.com/
 https://developer.musicgraph.com/api-docs/v2/artists

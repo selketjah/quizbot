@@ -6,3 +6,5 @@ nuget xunit
 nuget xunit.runner.visualstudio
 nuget linqtotwitter
 nuget Topshelf
+
+github evelinag/fsharp-swapi swapi.fs

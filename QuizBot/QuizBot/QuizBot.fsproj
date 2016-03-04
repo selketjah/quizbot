@@ -57,10 +57,15 @@
   </Target>
   -->
   <ItemGroup>
+    <Compile Include="..\..\paket-files\evelinag\fsharp-swapi\swapi.fs">
+      <Paket>True</Paket>
+      <Link>paket-files/swapi.fs</Link>
+    </Compile>
     <Compile Include="Core.fsi" />
     <Compile Include="Core.fs" />
     <Compile Include="WorldBankQuestions.fsi" />
     <Compile Include="WorldBankQuestions.fs" />
+    <None Include="StarWarsQuestions.fsx" />
     <Compile Include="Twitter.fsi" />
     <Compile Include="Twitter.fs" />
     <Compile Include="Facilitator.fs" />
