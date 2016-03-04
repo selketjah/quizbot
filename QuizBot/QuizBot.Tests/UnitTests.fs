@@ -3,6 +3,7 @@
 open System
 open Xunit
 open Swensen.Unquote
+open QuizBot.Participant
 open QuizBot.Core
 
 let question = { 
