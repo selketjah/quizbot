@@ -22,14 +22,14 @@ module Core =
 
   let determineCandidates question answers = 
       answers
-      |> List.filter (fun answer -> 
+      |> Array.filter (fun answer -> 
         validateAnswer question answer.Answer)
 
   let determineWinner question answers =
     match (determineCandidates question answers) with
-    | [] -> None
+    | [||] -> None
     | candidates -> 
       candidates
-      |> List.minBy (fun answer -> answer.Timestamp)
+      |> Array.minBy (fun answer -> answer.Timestamp)
       |> Some
 

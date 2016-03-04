@@ -1,13 +1,12 @@
 ## TODO
 
 * create a TopShelf host (check out steps, console app -> quizbot proj)
-* how are we going to seperate multiple choice wifromth single
+* how are we going to seperate multiple choice from single
 * design for common format across data sources for questions
 * check: does the capital actually exist? ex Macao has no capital
 * Rate limit
 * check status.Id (GV)
 * create unwrap for Participant (GV)
-* fsi file for core (GV)
 * deal with keys
 
 ## Done
@@ -19,6 +18,7 @@
   grab answers to a tweet
   ! CAREFUL WITH THE TWITTER RATE LIMIT
 * wrap question creation -> post to Twitter in 'something'
+* fsi file for core (GV)
 
 ## Notes
 
@@ -33,9 +33,6 @@ Exact answer: 'what is the capital of Belgium?'
 ? What is the country from 4 with largest population
 
 Winner = first correct, or closest within timeframe
-
-[20:03:05] Gien Verschatse: ParticipantResponse?
-[20:03:29] Mathias Brandewinder: yeah - or Guess?
 
 Exact? 'Brussels', 'Bruxelles', "brUSSELs', 'Brussel', 'burssels'
 'fuzzy string matching' : edit distance / Levenhstein distance (more generally string distance)

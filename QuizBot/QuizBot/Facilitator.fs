@@ -29,7 +29,6 @@ module Facilitator =
         { Participant = Participant r.ScreenName
           Timestamp = r.Timestamp
           Answer = r.Message })
-      |> Array.toList
       |> Core.determineWinner question
 
     match winner with

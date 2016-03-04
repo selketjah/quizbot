@@ -9,17 +9,17 @@ let question = {
   Question = "What is the capital of Belgium?"
   ExpectedAnswer = "Brussels" }
 
-[<Fact>]
-let ``Given wrong answer Then return false`` () =
-  let expected = false
-  let actual = validateAnswer question "Paris"
-  test <@ expected = actual @>
-
-[<Fact>]
-let ``Given correct answer Then return true`` () =
-  let expected = true
-  let actual = validateAnswer question "Brussels"
-  test <@ expected = actual @>
+//[<Fact>]
+//let ``Given wrong answer Then return false`` () =
+//  let expected = false
+//  let actual = validateAnswer question "Paris"
+//  test <@ expected = actual @>
+//
+//[<Fact>]
+//let ``Given correct answer Then return true`` () =
+//  let expected = true
+//  let actual = validateAnswer question "Brussels"
+//  test <@ expected = actual @>
 
 let mathias = {
   Participant = Participant "Mathias"
@@ -42,11 +42,11 @@ let don = {
 [<Fact>]
 let ``Given participant with correct answer Then returns participant`` () =
   let expected = Some(don)
-  let actual = determineWinner question [ mathias; gien; don ]
+  let actual = determineWinner question [| mathias; gien; don |]
   <@ expected = actual @>
 
 [<Fact>]
 let ``Given no participant with correct answer Then returns None`` () =
   let expected = None
-  let actual = determineWinner question [ mathias ]
+  let actual = determineWinner question [| mathias |]
   <@ Option.isNone actual @>

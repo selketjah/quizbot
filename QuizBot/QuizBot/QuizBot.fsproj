@@ -57,6 +57,7 @@
   </Target>
   -->
   <ItemGroup>
+    <Compile Include="Core.fsi" />
     <Compile Include="Core.fs" />
     <Compile Include="WorldBankQuestions.fsi" />
     <Compile Include="WorldBankQuestions.fs" />
