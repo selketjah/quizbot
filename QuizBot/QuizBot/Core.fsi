@@ -1,15 +1,20 @@
 ﻿namespace QuizBot
 
+module Participant =
+
+  type Participant = Participant of string  
+
+  val value: Participant -> string
+
 module Core =
 
   open System
+  open Participant
 
   type Question = { 
     Question: string
     ExpectedAnswer: string 
   }
-
-  type Participant = Participant of string
 
   type Answer = {
     Participant:Participant

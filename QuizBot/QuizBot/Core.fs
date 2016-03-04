@@ -1,15 +1,19 @@
 ﻿namespace QuizBot
 
+module Participant =
+  type Participant = Participant of string
+
+  let value (Participant p) = p
+
 module Core =
 
   open System
+  open Participant
 
   type Question = { 
     Question: string
     ExpectedAnswer: string 
   }
-
-  type Participant = Participant of string
 
   type Answer = {
     Participant:Participant
@@ -32,4 +36,6 @@ module Core =
       candidates
       |> Array.minBy (fun answer -> answer.Timestamp)
       |> Some
+
+
 

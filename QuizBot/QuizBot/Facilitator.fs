@@ -2,6 +2,7 @@
 
 module Facilitator = 
 
+  open QuizBot.Participant
   open QuizBot.Core
   open QuizBot.WorldBankQuestions
   open QuizBot.Twitter
@@ -11,7 +12,8 @@ module Facilitator =
 
   let announceWinner (participant:Participant) =
     participant
-    |> sprintf "%A has won!"
+    |> Participant.value
+    |> sprintf "%s has won!"
     |> Twitter.postTweet |> ignore 
 
   let rec loop (sleepTime:TimeSpan) = async {
