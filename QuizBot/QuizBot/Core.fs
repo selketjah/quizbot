@@ -36,6 +36,3 @@ module Core =
       candidates
       |> Array.minBy (fun answer -> answer.Timestamp)
       |> Some
-
-
-
