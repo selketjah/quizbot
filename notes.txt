@@ -1,12 +1,15 @@
 ## TODO
 
 * create a TopShelf host (check out steps, console app -> quizbot proj)
-* how are we going to separate multiple choice from single
 * design for common format across data sources for questions
 * Rate limit
 * deal with keys
 
-## Done
+## REVIEW
+* how are we going to separate multiple choice from single
+* create unwrap for Participant (GV)
+
+## DONE
 
 * Paket
 * GV : create a twitter for the bot
@@ -16,7 +19,6 @@
   ! CAREFUL WITH THE TWITTER RATE LIMIT
 * wrap question creation -> post to Twitter in 'something'
 * fsi file for core (GV)
-* create unwrap for Participant (GV)
 * check status.Id (GV)
 * check: does the capital actually exist? ex Macao has no capital (GV)
 

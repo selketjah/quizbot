@@ -11,9 +11,15 @@ module Core =
   open System
   open Participant
 
+  type ExpectedAnswerType =
+  | Compare
+  | XOf of int
+  | Closest
+
   type Question = { 
     Question: string
-    ExpectedAnswer: string 
+    ExpectedAnswer: string
+    ExpectedAnswerType: ExpectedAnswerType
   }
 
   type Answer = {

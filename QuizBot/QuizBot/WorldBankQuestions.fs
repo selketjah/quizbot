@@ -25,9 +25,11 @@ module WorldBankQuestions =
   let guessCapitalOfCountryQuestion () =
     let country, capital = getRandomCountryCapital ()
     { Question = sprintf "What is the capital of %s?" country
-      ExpectedAnswer = capital }
+      ExpectedAnswer = capital
+      ExpectedAnswerType = ExpectedAnswerType.Compare }
 
   let guessCountryWithCapitalQuestion () =
     let country, capital = getRandomCountryCapital ()
     { Question = sprintf "What is the country with capital city %s?" capital
-      ExpectedAnswer = country }
+      ExpectedAnswer = country
+      ExpectedAnswerType = ExpectedAnswerType.Compare }
