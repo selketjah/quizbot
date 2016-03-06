@@ -53,7 +53,8 @@ module Twitter =
         text
         |> context.TweetAsync)
 
-    (uint64) status.Id
+    let tweet = status.Result
+    tweet.StatusID
 
   let grabReplies (id:uint64) =
     let tweets =

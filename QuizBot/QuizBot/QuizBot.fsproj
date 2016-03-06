@@ -65,6 +65,7 @@
     <Compile Include="Core.fs" />
     <Compile Include="WorldBankQuestions.fsi" />
     <Compile Include="WorldBankQuestions.fs" />
+    <Compile Include="StarWarsQuestions.fsi" />
     <Compile Include="StarWarsQuestions.fs" />
     <Compile Include="Twitter.fsi" />
     <Compile Include="Twitter.fs" />
