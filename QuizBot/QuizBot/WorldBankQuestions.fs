@@ -11,6 +11,7 @@ module WorldBankQuestions =
   let countriesCapitals =
     wb.Countries
     |> Seq.map (fun country -> (country.Name, country.CapitalCity))
+    |> Seq.filter (fun (country, capital) -> capital <> "")
     |> Seq.toArray
 
   let countriesCount = countriesCapitals.Length
