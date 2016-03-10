@@ -11,21 +11,23 @@ module Core =
   open System
   open Participant
 
-  type ExpectedAnswerType =
+  type QuestionType =
   | Compare
   | XOf of int
   | Closest
 
+  type Answer = S of string | I of int64
+
   type Question = { 
     Question: string
-    ExpectedAnswer: string
-    ExpectedAnswerType: ExpectedAnswerType
+    ExpectedAnswer: Answer
+    Type: QuestionType
   }
 
-  type Answer = {
+  type Guess = {
     Participant:Participant
     Timestamp:DateTime
-    Answer:string
+    Answer:Answer
   }
 
-  val determineWinner: Question -> Answer[] -> Answer option
+  val determineWinner: Question -> Guess[] -> Guess option

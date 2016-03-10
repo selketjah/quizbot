@@ -2,21 +2,33 @@
 
 module Facilitator = 
 
+  open System
+  open System.Text.RegularExpressions
   open QuizBot.Participant
   open QuizBot.Core
   open QuizBot.WorldBankQuestions
   open QuizBot.Twitter
-  open System
 
   let sleepTime = TimeSpan(0,0,1)
+
+  let (|IsInt|_|) input =
+    let m = Regex.Match(input, @"^\d+$")
+    if (m.Success) then Some (Int64.Parse input) else None
+
+  let parseResponse r =
+    { Participant = Participant r.ScreenName
+      Timestamp = r.Timestamp
+      Answer = match r.Message with
+               | IsInt i -> Answer.I i
+               | _ -> Answer.S r.Message }
 
   let announceWinner (participant:Participant) =
     participant
     |> Participant.value
     |> sprintf "%s has won!"
-    |> Twitter.postTweet |> ignore 
+    |> Twitter.postTweet |> ignore
 
-  let rec loop (sleepTime:TimeSpan) = async {
+  let rec loop (sleepTime:TimeSpan) = async {  
     
     let question = guessCapitalOfCountryQuestion()  
     let questionID = Twitter.postTweet question.Question
@@ -27,10 +39,7 @@ module Facilitator =
 
     let winner = 
       replies
-      |> Array.map (fun r -> 
-        { Participant = Participant r.ScreenName
-          Timestamp = r.Timestamp
-          Answer = r.Message })
+      |> Array.map (fun r -> parseResponse r)
       |> Core.determineWinner question
 
     match winner with

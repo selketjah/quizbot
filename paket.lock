@@ -37,7 +37,6 @@ NUGET
       xunit.abstractions (2.0.0)
     xunit.extensibility.execution (2.1.0)
       xunit.extensibility.core (2.1.0)
-    xunit.runner.visualstudio (2.1.0)
 GITHUB
   remote: evelinag/fsharp-swapi
   specs:

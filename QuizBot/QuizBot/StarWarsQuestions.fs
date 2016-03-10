@@ -28,12 +28,11 @@ module StarWarsQuestions =
 
   let guessThreePlanetsQuestion () =
     { Question = sprintf "Name three planets from Star Wars. [1,2,3]"
-      ExpectedAnswer = planets
-      ExpectedAnswerType = ExpectedAnswerType.XOf(3) }
+      ExpectedAnswer = Answer.S planets
+      Type = QuestionType.XOf(3) }
 
   let guessPlanetPopulation () =
     let planet, population = getRandomPlanetPopulation ()
     { Question = sprintf "What is the population of the planet %s in Star Wars?" planet
-      ExpectedAnswer = sprintf "%i" population.Value
-      ExpectedAnswerType = ExpectedAnswerType.Closest }
-
+      ExpectedAnswer = Answer.I population.Value
+      Type = QuestionType.Closest }

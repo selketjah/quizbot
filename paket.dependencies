@@ -3,7 +3,6 @@ source https://nuget.org/api/v2
 nuget FSharp.Data
 nuget Unquote
 nuget xunit
-nuget xunit.runner.visualstudio
 nuget linqtotwitter
 nuget Topshelf
 
