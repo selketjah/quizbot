@@ -11,17 +11,6 @@ module Facilitator =
 
   let sleepTime = TimeSpan(0,0,1)
 
-  let (|IsInt|_|) input =
-    let m = Regex.Match(input, @"^\d+$")
-    if (m.Success) then Some (Int64.Parse input) else None
-
-  let parseResponse r =
-    { Participant = Participant r.ScreenName
-      Timestamp = r.Timestamp
-      Answer = match r.Message with
-               | IsInt i -> Answer.I i
-               | _ -> Answer.S r.Message }
-
   let announceWinner (participant:Participant) =
     participant
     |> Participant.value
@@ -39,7 +28,10 @@ module Facilitator =
 
     let winner = 
       replies
-      |> Array.map (fun r -> parseResponse r)
+      |> Array.map (fun r -> 
+        { Participant = Participant r.ScreenName
+          Timestamp = r.Timestamp
+          Answer = r.Message })
       |> Core.determineWinner question
 
     match winner with

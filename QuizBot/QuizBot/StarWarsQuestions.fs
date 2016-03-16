@@ -11,7 +11,7 @@ module StarWarsQuestions =
   let planets =
     getAllPlanets()
     |> Array.map(fun m -> m.Name)
-    |> String.concat ", "
+    |> Set.ofArray
 
   let planetPopulation =
     getAllPlanets()
@@ -28,11 +28,9 @@ module StarWarsQuestions =
 
   let guessThreePlanetsQuestion () =
     { Question = sprintf "Name three planets from Star Wars. [1,2,3]"
-      ExpectedAnswer = Answer.S planets
-      Type = QuestionType.XOf(3) }
+      ExpectedAnswer = Category.XOf (3, planets) }
 
   let guessPlanetPopulation () =
     let planet, population = getRandomPlanetPopulation ()
     { Question = sprintf "What is the population of the planet %s in Star Wars?" planet
-      ExpectedAnswer = Answer.I population.Value
-      Type = QuestionType.Closest }
+      ExpectedAnswer = Category.Closest population.Value }

@@ -4,6 +4,6 @@ module WorldBankQuestions =
 
   open QuizBot.Core
 
-  val guessCapitalOfCountryQuestion : unit -> Question
+  val guessCapitalOfCountryQuestion : unit -> Question<string>
 
-  val guessCountryWithCapitalQuestion : unit -> Question
+  val guessCountryWithCapitalQuestion : unit -> Question<string>

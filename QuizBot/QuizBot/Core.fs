@@ -10,41 +10,41 @@ module Core =
   open System
   open Participant
 
-  type QuestionType =
-  | Compare
-  | XOf of int
-  | Closest
+  type Category<'T when 'T : comparison> =
+    | Exact of 'T
+    | XOf of int * Set<'T>
+    | Closest of 'T
 
-  type Answer = S of string | I of int64
-
-  type Question = { 
+  type Question<'T when 'T : comparison> = {  
     Question: string
-    ExpectedAnswer: Answer
-    Type: QuestionType
+    ExpectedAnswer: Category<'T>
   }
 
   type Guess = {
     Participant:Participant
     Timestamp:DateTime
-    Answer:Answer
+    Answer:string
   }
 
-  let validateCompareAnswer (question:Question) (guesses:Guess[]) =
-    guesses
-    |> Array.filter (fun guess -> (question.ExpectedAnswer = guess.Answer))
+  let validateExactAnswer (expectedAnswer:'a) (guesses:Guess[]) =
+    guesses 
+    |> Array.filter (fun guess -> guess.Answer.Equals(expectedAnswer))
 
-  let validateXOfAnswer (question:Question) (guesses:Guess[]) numberOf =
-    guesses
 
-  let validateClosestAnswer (question:Question) (guesses:Guess[]) =
+  let validateXOfAnswer numberOf (expectedAnswer:'a) (guesses:Guess[])  =
     guesses
 
+  let validateClosestAnswer (expectedAnswer:'a) (guesses:Guess[]) =
+    guesses
+  //  |> Array.groupBy (fun g -> difference question.ExpectedAnswer g.Answer)
+  //  |> Array.sortBy fst
+    
 
   let determineCandidates question guesses =
-    match question.Type with
-    | Compare -> validateCompareAnswer question guesses
-    | XOf(x) -> validateXOfAnswer question guesses x
-    | Closest -> validateClosestAnswer question guesses
+    match question.ExpectedAnswer with
+    | Exact(x) -> validateExactAnswer x guesses
+    | XOf(x, y) -> validateXOfAnswer x y guesses
+    | Closest(x) -> validateClosestAnswer x guesses
 
   let determineWinner question guesses =
     match (determineCandidates question guesses) with
