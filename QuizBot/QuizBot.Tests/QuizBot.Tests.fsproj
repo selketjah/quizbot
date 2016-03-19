@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="CompareQuestionsTests.fs" />
     <Compile Include="ClosestQuestionsTests.fs" />
+    <Compile Include="XOfQuestionsTests.fs" />
     <Content Include="app.config" />
     <Content Include="packages.config" />
   </ItemGroup>
