@@ -4,6 +4,6 @@ module StarWarsQuestions =
 
   open QuizBot.Core
 
-  val guessThreePlanetsQuestion: unit -> Question<string>
+  val guessThreePlanetsQuestion: unit -> Question
 
-  val guessPlanetPopulation: unit -> Question<int64>
+  val guessPlanetPopulation: unit -> Question

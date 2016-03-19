@@ -66,7 +66,7 @@ module Twitter =
 
     tweets
     |> Array.map(fun t -> 
-      {   MessageId = t.StatusID
-          ScreenName = t.User.ScreenNameResponse 
-          Message = t.Text
-          Timestamp = t.CreatedAt })
+      { MessageId = t.StatusID
+        ScreenName = t.User.ScreenNameResponse 
+        Message = removeBotHandle t.Text
+        Timestamp = t.CreatedAt })

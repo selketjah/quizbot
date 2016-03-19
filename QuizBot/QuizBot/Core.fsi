@@ -11,14 +11,14 @@ module Core =
   open System
   open Participant
 
-  type Category<'T when 'T : comparison> =
-    | Exact of 'T
-    | XOf of int * Set<'T>
-    | Closest of 'T
+  type Category =
+    | Exact of string
+    | XOf of int * Set<string>
+    | Closest of float
 
-  type Question<'T when 'T : comparison> = {  
+  type Question= {  
     Question: string
-    ExpectedAnswer: Category<'T>
+    ExpectedAnswer: Category
   }
 
   type Guess = {
@@ -27,4 +27,4 @@ module Core =
     Answer:string
   }
 
-  val determineWinner: Question<'T> -> Guess[] -> Guess option
+  val determineWinner: Question -> Guess[] -> Guess option

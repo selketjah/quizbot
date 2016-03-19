@@ -19,6 +19,8 @@ module Facilitator =
 
   let rec loop (sleepTime:TimeSpan) = async {  
     
+    printfn "New question"
+
     let question = guessCapitalOfCountryQuestion()  
     let questionID = Twitter.postTweet question.Question
 
@@ -34,6 +36,8 @@ module Facilitator =
           Answer = r.Message })
       |> Core.determineWinner question
 
+    printfn "%A" winner
+
     match winner with
     | None -> Twitter.postTweet "Nobody won." |> ignore
     | Some(winner) -> 
@@ -47,6 +51,11 @@ module Facilitator =
 type BotService () =
 
   member this.Start () = 
+
+    let time = System.TimeSpan(0,0,10)
+    Facilitator.loop time 
+    |> Async.Start
+
     printfn "Started"
 
   member this.Stop () =

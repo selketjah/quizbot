@@ -33,4 +33,4 @@ module StarWarsQuestions =
   let guessPlanetPopulation () =
     let planet, population = getRandomPlanetPopulation ()
     { Question = sprintf "What is the population of the planet %s in Star Wars?" planet
-      ExpectedAnswer = Category.Closest population.Value }
+      ExpectedAnswer = Category.Closest (float population.Value) }

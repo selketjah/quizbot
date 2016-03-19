@@ -8,16 +8,17 @@ module Participant =
 module Core =
 
   open System
+  open FParsec
   open Participant
 
-  type Category<'T when 'T : comparison> =
-    | Exact of 'T
-    | XOf of int * Set<'T>
-    | Closest of 'T
+  type Category =
+    | Exact of string
+    | XOf of int * Set<string>
+    | Closest of float
 
-  type Question<'T when 'T : comparison> = {  
+  type Question = {  
     Question: string
-    ExpectedAnswer: Category<'T>
+    ExpectedAnswer: Category
   }
 
   type Guess = {
@@ -26,24 +27,36 @@ module Core =
     Answer:string
   }
 
-  let validateExactAnswer (expectedAnswer:'a) (guesses:Guess[]) =
+  let parseFloat text =
+    match (run pfloat text) with
+    | Success(result, _, _)   -> result
+    | Failure(errorMsg, _, _) -> failwith errorMsg
+  
+  let validateExactAnswer expectedAnswer (guesses:Guess[]) =
     guesses 
     |> Array.filter (fun guess -> guess.Answer.Equals(expectedAnswer))
 
-
-  let validateXOfAnswer numberOf (expectedAnswer:'a) (guesses:Guess[])  =
+  let validateXOfAnswer (numberOf, expectedAnswer) (guesses:Guess[])  =
     guesses
+    |> Array.filter(fun x -> 
+      x.Answer.Split(',')
+      |> Set.ofArray
+      |> Set.intersect expectedAnswer
+      |> Set.count
+      |> fun count -> count >= numberOf)
 
-  let validateClosestAnswer (expectedAnswer:'a) (guesses:Guess[]) =
+  let validateClosestAnswer expectedAnswer (guesses:Guess[]) =
     guesses
-  //  |> Array.groupBy (fun g -> difference question.ExpectedAnswer g.Answer)
-  //  |> Array.sortBy fst
-    
+    |> Array.map (fun guess -> (guess, abs(expectedAnswer -  parseFloat guess.Answer)))
+    |> Array.groupBy snd
+    |> Array.minBy fst
+    |> snd
+    |> Array.map (fun (guess, diff) -> guess)
 
   let determineCandidates question guesses =
     match question.ExpectedAnswer with
     | Exact(x) -> validateExactAnswer x guesses
-    | XOf(x, y) -> validateXOfAnswer x y guesses
+    | XOf(x, y) -> validateXOfAnswer (x, y) guesses
     | Closest(x) -> validateClosestAnswer x guesses
 
   let determineWinner question guesses =
