@@ -1,13 +1,13 @@
 ## TODO
 
-* create a TopShelf host (check out steps, console app -> quizbot proj)
-* design for common format across data sources for questions
 * Rate limit
 * deal with keys
+* add correct answer if nobody one (?)
+* create engine for cleaning up participant answers
+* create engine for valid answers (xof -> all three must be diff)
 
 ## REVIEW
-* how are we going to separate multiple choice from single
-* create unwrap for Participant (GV)
+
 
 ## DONE
 
@@ -21,6 +21,10 @@
 * fsi file for core (GV)
 * check status.Id (GV)
 * check: does the capital actually exist? ex Macao has no capital (GV)
+* create a TopShelf host (check out steps, console app -> quizbot proj)
+* how are we going to separate multiple choice from single
+* create unwrap for Participant (GV)
+* design for common format across data sources for questions
 
 ## Notes
 

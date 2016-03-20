@@ -6,7 +6,7 @@ module Facilitator =
   open System.Text.RegularExpressions
   open QuizBot.Participant
   open QuizBot.Core
-  open QuizBot.WorldBankQuestions
+  open QuizBot.Questions
   open QuizBot.Twitter
 
   let sleepTime = TimeSpan(0,0,1)
@@ -19,9 +19,7 @@ module Facilitator =
 
   let rec loop (sleepTime:TimeSpan) = async {  
     
-    printfn "New question"
-
-    let question = guessCapitalOfCountryQuestion()  
+    let question = Questions.next ()  
     let questionID = Twitter.postTweet question.Question
 
     do! Async.Sleep (sleepTime.TotalMilliseconds |> int)
@@ -39,7 +37,7 @@ module Facilitator =
     printfn "%A" winner
 
     match winner with
-    | None -> Twitter.postTweet "Nobody won." |> ignore
+    | None -> Twitter.postTweet "Nobody won. :-(" |> ignore
     | Some(winner) -> 
       announceWinner winner.Participant |> ignore
   
