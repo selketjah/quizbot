@@ -53,6 +53,7 @@
   </Choose>
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
+    <Compile Include="NormalizationTests.fs" />
     <Compile Include="CompareQuestionsTests.fs" />
     <Compile Include="ClosestQuestionsTests.fs" />
     <Compile Include="XOfQuestionsTests.fs" />

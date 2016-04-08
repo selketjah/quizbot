@@ -61,6 +61,8 @@
       <Paket>True</Paket>
       <Link>paket-files/swapi.fs</Link>
     </Compile>
+    <Compile Include="Normalization.fsi" />
+    <Compile Include="Normalization.fs" />
     <Compile Include="Core.fsi" />
     <Compile Include="Core.fs" />
     <Compile Include="WorldBankQuestions.fsi" />

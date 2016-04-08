@@ -10,6 +10,7 @@ module Core =
   open System
   open FParsec
   open Participant
+  open Normalization
 
   type Category =
     | Exact of string
@@ -21,7 +22,7 @@ module Core =
     ExpectedAnswer: Category
   }
 
-  type Guess = {
+  type Answer = {
     Participant:Participant
     Timestamp:DateTime
     Answer:string
@@ -31,21 +32,26 @@ module Core =
     match (run pfloat text) with
     | Success(result, _, _)   -> result
     | Failure(errorMsg, _, _) -> failwith errorMsg
-  
-  let validateExactAnswer expectedAnswer (guesses:Guess[]) =
-    guesses 
-    |> Array.filter (fun guess -> guess.Answer.Equals(expectedAnswer))
 
-  let validateXOfAnswer (numberOf, expectedAnswer) (guesses:Guess[])  =
+
+  let validateExactAnswer expectedAnswer (guesses:Answer[]) =
+    guesses 
+    |> Array.filter (fun guess -> guess.Answer
+                                  |> Normalization.cleanText
+                                  |> fun answer -> answer.Equals (expectedAnswer |> Normalization.cleanText ))
+
+  let validateXOfAnswer (numberOf, expectedAnswer) (guesses:Answer[])  =
     guesses
     |> Array.filter(fun x -> 
       x.Answer.Split(',')
       |> Set.ofArray
-      |> Set.intersect expectedAnswer
+      |> Set.map Normalization.cleanText
+      |> Set.intersect (expectedAnswer 
+                        |> Set.map Normalization.cleanText)
       |> Set.count
       |> fun count -> count >= numberOf)
 
-  let validateClosestAnswer expectedAnswer (guesses:Guess[]) =
+  let validateClosestAnswer expectedAnswer (guesses:Answer[]) =
     guesses
     |> Array.map (fun guess -> (guess, abs(expectedAnswer -  parseFloat guess.Answer)))
     |> Array.groupBy snd

@@ -9,12 +9,12 @@ module Facilitator =
   open QuizBot.Questions
   open QuizBot.Twitter
 
-  let sleepTime = TimeSpan(0,0,1)
+  let pause = TimeSpan(0,10,0)
 
   let announceWinner (participant:Participant) =
     participant
     |> Participant.value
-    |> sprintf "%s has won!"
+    |> sprintf "@%s has won!"
     |> Twitter.postTweet |> ignore
 
   let rec loop (sleepTime:TimeSpan) = async {  
@@ -41,16 +41,16 @@ module Facilitator =
     | Some(winner) -> 
       announceWinner winner.Participant |> ignore
   
+    //do! Async.Sleep (pause.TotalMilliseconds |> int)
+
     return! loop(sleepTime)
   }
-
-  loop sleepTime |> Async.Start
 
 type BotService () =
 
   member this.Start () = 
 
-    let time = System.TimeSpan(0,0,10)
+    let time = System.TimeSpan(0,2,0)
     Facilitator.loop time 
     |> Async.Start
 

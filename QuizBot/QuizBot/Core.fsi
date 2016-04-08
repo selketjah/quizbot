@@ -21,10 +21,10 @@ module Core =
     ExpectedAnswer: Category
   }
 
-  type Guess = {
+  type Answer = {
     Participant:Participant
     Timestamp:DateTime
     Answer:string
   }
 
-  val determineWinner: Question -> Guess[] -> Guess option
+  val determineWinner: Question -> Answer[] -> Answer option

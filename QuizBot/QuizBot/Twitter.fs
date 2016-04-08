@@ -9,7 +9,7 @@ module Twitter =
   open System.Threading.Tasks
   open System.Text.RegularExpressions
   open LinqToTwitter
-    
+ 
   type Response = { 
     MessageId:uint64
     ScreenName:string
@@ -43,6 +43,35 @@ module Twitter =
   let removeBotHandle text = 
     Regex.Replace(text, "@QuizBowlBot", "", RegexOptions.IgnoreCase)
 
+  let unixEpoch = DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
+
+  let fromUnix (unixTime:int) =
+    unixTime
+    |> float
+    |> TimeSpan.FromSeconds
+    |> unixEpoch.Add
+
+  let prettyTime (unixTime:int) = 
+    (unixTime |> fromUnix).ToShortTimeString()
+  
+  let timeframe = 15. 
+  let safetyBuffer = 5. |> TimeSpan.FromSeconds
+
+  let delayUntilNextCall (context:TwitterContext) =
+    let delay =
+        if context.RateLimitRemaining > 0
+        then
+            timeframe / (float context.RateLimitCurrent)
+            |> TimeSpan.FromMinutes
+        else
+            let nextReset = 
+                context.RateLimitReset
+                |> float
+                |> TimeSpan.FromSeconds
+                |> unixEpoch.Add
+            nextReset - DateTime.UtcNow
+    delay.Add safetyBuffer
+
   let postTweet text =
     let message = 
       text
@@ -54,6 +83,9 @@ module Twitter =
         |> context.TweetAsync)
 
     let tweet = status.Result
+    
+    printfn "Rate:  total:%i remaining:%i reset:%s" context.RateLimitCurrent context.RateLimitRemaining (context.RateLimitReset |> prettyTime)
+
     tweet.StatusID
 
   let grabReplies (id:uint64) =
