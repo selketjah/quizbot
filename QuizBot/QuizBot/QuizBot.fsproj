@@ -71,6 +71,8 @@
     <Compile Include="StarWarsQuestions.fs" />
     <Compile Include="Questions.fsi" />
     <Compile Include="Questions.fs" />
+    <Compile Include="Announcement.fsi" />
+    <Compile Include="Announcement.fs" />
     <Compile Include="Twitter.fsi" />
     <Compile Include="Twitter.fs" />
     <Compile Include="Facilitator.fs" />

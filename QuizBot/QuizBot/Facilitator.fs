@@ -7,15 +7,10 @@ module Facilitator =
   open QuizBot.Participant
   open QuizBot.Core
   open QuizBot.Questions
+  open QuizBot.Announcement
   open QuizBot.Twitter
 
   let pause = TimeSpan(0,10,0)
-
-  let announceWinner (participant:Participant) =
-    participant
-    |> Participant.value
-    |> sprintf "@%s has won!"
-    |> Twitter.postTweet |> ignore
 
   let rec loop (sleepTime:TimeSpan) = async {  
     
@@ -38,8 +33,7 @@ module Facilitator =
 
     match winner with
     | None -> Twitter.postTweet "Nobody won. :-(" |> ignore
-    | Some(winner) -> 
-      announceWinner winner.Participant |> ignore
+    | Some(winner) -> Twitter.postTweet (Announcement.announceWinner winner question) |> ignore
   
     //do! Async.Sleep (pause.TotalMilliseconds |> int)
 
