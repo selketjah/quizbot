@@ -1,5 +1,5 @@
 **/packages/*
-/.vs
+**/.vs
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
@@ -8,3 +8,4 @@
 [Oo]bj/
 
 /**/App.config
+.paket/paket.exe
