@@ -6,3 +6,5 @@ module Announcement =
   open QuizBot.Core
   
   val announceWinner: Answer -> Question -> string
+
+  val announceNoWinner: Question -> string

@@ -41,7 +41,7 @@
   }
 
   [<Fact>]
-  let `` given question type exact when announcing winner then answer is in announcement `` () =
+  let `` Given question type exact when announcing winner then answer is in announcement `` () =
     let expected = "@selketjah has won! The correct answer was Brussels."
     let actual = announceWinner exactWinner exactQuestion
     test <@ expected = actual @>
@@ -58,3 +58,21 @@
     let actual = announceWinner xofWinner xofQuestion
     test <@ expected = actual @>
 
+  [<Fact>]
+  let  `` Given question type exact when announcing no winner then answer is in announcement `` () =
+    let expected = "Nobody won :-( The correct answer was Brussels."
+    let actual = announceNoWinner exactQuestion
+    test <@ expected = actual @>
+
+
+  [<Fact>]
+  let `` Given question type Closest when announcing no winner then answer is in announcement `` () =
+    let expected = "Nobody was close enough :'( The exact answer was 10000."
+    let actual = announceNoWinner closestQuestion
+    test <@ expected = actual @>
+
+  [<Fact>]
+  let `` Given question type XOf when announcing no winner then answer is in announcement `` () =
+    let expected = "Nobody had 3 correct answers. :-/"
+    let actual = announceNoWinner xofQuestion
+    test <@ expected = actual @>
