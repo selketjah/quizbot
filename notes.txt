@@ -1,12 +1,11 @@
+? what happens when nobody replies
+
 ## TODO
 
 * Rate limit
 * deal with keys
-* add correct answer if nobody won (?)
 * create engine for valid answers (xof -> all three must be diff)
-* user error when winning two times in a row -> status is duplicate
-* check what happens when nobody replied
-* add error handling (rop?)
+* add error handling (rop?) (status is duplicate)
 
 ## REVIEW
 
@@ -30,6 +29,8 @@
 * fix announcing winner with '@username' instead of 'username'
 * create engine for normalizing participant answers
 * add correct answer when somebody won
+* add correct answer if nobody won (?)
+* user error when winning two times in a row -> status is duplicate
 
 ## Notes
 
